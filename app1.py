@@ -19,16 +19,16 @@ vars['cit'] = 0
 vars['vat'] = 0
 
 tax_type = 'pit'
-vars['DEFAULTS_FILENAME'] = "current_law_policy_pit_training.json"
-vars['GROWFACTORS_FILENAME'] = "growfactors_pit_training.csv" 
-vars['pit_data_filename'] = "pit_data_training.csv"
-vars['pit_weights_filename'] = "pit_weights_training.csv"
-vars['pit_records_variables_filename'] = "records_variables_pit_training.json"
-vars['pit_benchmark_filename'] = "tax_incentives_benchmark_pit_training.json"
-vars['pit_elasticity_filename'] = "elasticity_pit_training.json"
-vars['pit_functions_filename'] = "functions_pit_training.py"
-vars['pit_function_names_filename'] = "function_names_pit_training.json"
-vars['pit_distribution_json_filename'] = 'pit_distribution_training.json'
+vars['DEFAULTS_FILENAME'] = "current_law_policy_pit_ethiopia.json"
+vars['GROWFACTORS_FILENAME'] = "growfactors_pit_ethiopia.csv" 
+vars['pit_data_filename'] = "pit_data_ethiopia.csv"
+vars['pit_weights_filename'] = "pit_weights_ethiopia.csv"
+vars['pit_records_variables_filename'] = "records_variables_pit_ethiopia.json"
+vars['pit_benchmark_filename'] = "tax_incentives_benchmark_pit_ethiopia.json"
+vars['pit_elasticity_filename'] = "elasticity_pit_ethiopia.json"
+vars['pit_functions_filename'] = "functions_pit_ethiopia.py"
+vars['pit_function_names_filename'] = "function_names_pit_ethiopia.json"
+vars['pit_distribution_json_filename'] = 'pit_distribution_ethiopia.json'
 
 vars['vat_data_filename'] = "gst.csv"
 vars['vat_weights_filename'] = "gst_weights.csv"
@@ -38,15 +38,15 @@ vars['cit_data_filename'] = "cit_cross.csv"
 vars['cit_weights_filename'] = "cit_cross_wgts1.csv"
 vars['cit_records_variables_filename'] = "corprecords_variables.json"
 
-vars['gdp_filename'] = 'gdp_nominal_training.csv'
+vars['gdp_filename'] = 'gdp_nominal_ethiopia.csv'
 vars["start_year"] = 2022
-vars["end_year"] = 2027
-vars["SALARY_VARIABLE"] = "gross_i_w"
-vars['elasticity_filename'] = "elasticity_pit_training.json"
-vars['DIST_VARIABLES'] = ['weight', 'total_gross_income', 'pitax']
-vars['DIST_TABLE_COLUMNS'] = ['weight', 'total_gross_income', 'pitax']        
+vars["end_year"] = 2032
+vars["SALARY_VARIABLE"] = "Employment_Income"
+vars['elasticity_filename'] = "elasticity_pit_ethiopia.json"
+vars['DIST_VARIABLES'] = ['weight', 'gross_income', 'pitax']
+vars['DIST_TABLE_COLUMNS'] = ['weight', 'gross_income', 'pitax']        
 vars['DIST_TABLE_LABELS'] = ['Returns',
-                     'Gross Total Income',
+                     'Gross Income',
                      'PITax']
 vars['DECILE_ROW_NAMES'] = ['0-10n', '0-10z', '0-10p',
                     '10-20', '20-30', '30-40', '40-50',
@@ -57,10 +57,10 @@ vars['STANDARD_ROW_NAMES'] = [ "<0", "=0", "0-0.5 m", "0.5-1m", "1-1.5m", "1.5-2
                       "2-3m", "3-4m", "4-5m", "5-10m", ">10m", "ALL"]
 vars['STANDARD_INCOME_BINS'] = [-9e99, -1e-9, 1e-9, 5e5, 10e5, 15e5, 20e5, 30e5,
                         40e5, 50e5, 100e5, 9e99]
-vars['income_measure'] = "total_gross_income"
+vars['income_measure'] = "gross_income"
 vars['show_error_log'] = 0
 vars['verbose'] = 0
-vars['data_start_year'] = 2018
+vars['data_start_year'] = 2022
 
 f = open('taxcalc/'+vars['pit_distribution_json_filename'])
 distribution_vardict_dict = json.load(f)

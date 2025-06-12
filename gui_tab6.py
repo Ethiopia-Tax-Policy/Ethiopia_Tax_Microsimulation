@@ -84,7 +84,7 @@ def display_chart(self, event, global_vars):
         
     self.image = ImageTk.PhotoImage(Image.open("blank.png"))
     self.pic = tk.Label(self.TAB6,image=self.image)
-    self.pic.place(relx = 0.20, rely = 0.1, anchor = "nw")
+    self.pic.place(relx = 0.25, rely = 0.05, anchor = "nw")
     self.pic.image = self.image 
    
     #self.selected_attribute_chart = self.attribute_selection.get()
@@ -139,7 +139,7 @@ def display_chart(self, event, global_vars):
         plt.close('all')
         self.image = ImageTk.PhotoImage(Image.open("rev_forecast.png"))
         self.pic = tk.Label(self.TAB6,image=self.image)
-        self.pic.place(relx = 0.20, rely = 0.1, anchor = "nw")
+        self.pic.place(relx = 0.25, rely = 0.05, anchor = "nw")
         self.pic.image = self.image
         
     elif (selected_chart==tax_type+'_distribution_table'):
@@ -147,7 +147,7 @@ def display_chart(self, event, global_vars):
         df.drop('Unnamed: 0', axis=1, inplace=True)
         df = df.set_index('index')
         df.index.names = ['Decile']
-        fig, ax = plt.subplots(figsize=(8, 8))  
+        fig, ax = plt.subplots(figsize=(8, 6))  
         #drop the rows that includes the average and top 1%
         df=df[:-4]
         ax = df.plot(kind='bar',y=[tax_collection_var+'_'+str(data_start_year), tax_collection_var+'_'+str(start_year), tax_collection_var+'_ref_'+str(start_year)],figsize=(7, 7))
@@ -160,7 +160,7 @@ def display_chart(self, event, global_vars):
         plt.close('all')
         self.image = ImageTk.PhotoImage(Image.open("distribution_chart.png"))
         self.pic = tk.Label(self.TAB6,image=self.image)
-        self.pic.place(relx = 0.20, rely = 0.1, anchor = "nw")
+        self.pic.place(relx = 0.25, rely = 0.05, anchor = "nw")
         self.pic.image = self.image
         
     elif (selected_chart==tax_type+'_distribution_table_top1'):
@@ -168,7 +168,7 @@ def display_chart(self, event, global_vars):
         df.drop('Unnamed: 0', axis=1, inplace=True)
         df = df.set_index('index')
         df.index.names = ['Decile']
-        fig, ax = plt.subplots(figsize=(8, 8))              
+        fig, ax = plt.subplots(figsize=(8, 6))              
         ax=df.plot(kind='bar',y=[tax_collection_var+'_'+str(data_start_year), tax_collection_var+'_'+str(start_year), tax_collection_var+'_ref_'+str(start_year)],figsize=(7, 7))       
         ax.set_xlabel("Assessable Income Deciles")
         ax.yaxis.set_major_formatter(formatter)
@@ -179,7 +179,7 @@ def display_chart(self, event, global_vars):
         plt.close('all')
         self.image = ImageTk.PhotoImage(Image.open("distribution_chart_top.png"))
         self.pic = tk.Label(self.TAB6,image=self.image)
-        self.pic.place(relx = 0.20, rely = 0.1, anchor = "nw")
+        self.pic.place(relx = 0.25, rely = 0.05, anchor = "nw")
         self.pic.image = self.image
     
     elif (selected_chart==tax_type+'_distribution_table_income_bins'):
@@ -200,7 +200,7 @@ def display_chart(self, event, global_vars):
             else:
                 labels1=labels1+[df1.index[i]]
             
-        fig, (ax1,ax2) = plt.subplots(1,2,figsize=(10,7)) #ax1,ax2 refer to your two pies
+        fig, (ax1,ax2) = plt.subplots(1,2,figsize=(9,6)) #ax1,ax2 refer to your two pies
         w1,l1,p1 = ax1.pie(df1.pct1,labels=labels1,autopct = '%1.1f%%', startangle=90, pctdistance=1) #plot first pie
         pctdists = [0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.3, 0.3]
         for t,d in zip(p1, pctdists):
@@ -235,7 +235,7 @@ def display_chart(self, event, global_vars):
         plt.close('all')
         self.image = ImageTk.PhotoImage(Image.open("tax_contribution.png"))
         self.pic = tk.Label(self.TAB6,image=self.image)
-        self.pic.place(relx = 0.20, rely = 0.1, anchor = "nw")
+        self.pic.place(relx = 0.25, rely = 0.05, anchor = "nw")
         self.pic.image = self.image
         
     elif (selected_chart==tax_type+'_etr'):        
@@ -266,7 +266,7 @@ def display_chart(self, event, global_vars):
         plt.close('all')
         self.image = ImageTk.PhotoImage(Image.open("etr.png"))
         self.pic = tk.Label(self.TAB6,image=self.image)
-        self.pic.place(relx = 0.20, rely = 0.1, anchor = "nw")
+        self.pic.place(relx = 0.25, rely = 0.05, anchor = "nw")
         self.pic.image = self.image       
     
 

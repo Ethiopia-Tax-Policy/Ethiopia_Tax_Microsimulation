@@ -6,6 +6,7 @@ Created on Thu Nov 11 18:28:24 2021
 """
 import copy
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import tkinter as tk
 from tkinter import ttk
@@ -85,6 +86,8 @@ def weighted_total_tax(calc, tax_list, category, year, tax_dict, gdp=None, attri
             tax_dict[tax_type][year][category]['value_bill'][k] = tax_dict[tax_type][year][category]['value'][k]/10**9
             tax_dict[tax_type][year][category]['value_bill_str'][k] = '{0:.2f}'.format(tax_dict[tax_type][year][category]['value_bill'][k])        
             if gdp is not None:
+                #print((tax_dict[tax_type][year][category]['value'][k]))
+                #print(gdp[str(year)])
                 tax_dict[tax_type][year][category]['value_gdp'][k] = ((tax_dict[tax_type][year][category]['value'][k]/10**9)/gdp[str(year)])*100
                 tax_dict[tax_type][year][category]['value_gdp_str'][k] = '{0:.2f}'.format(tax_dict[tax_type][year][category]['value_gdp'][k])  
     #print('tax_dict ', tax_dict)
@@ -399,7 +402,6 @@ def generate_policy_revenues():
         """
         Return gini.
         """
-
         df_tax12[tax_type]['All']['weight'] = df_tax12[tax_type]['All']['weight'+'_'+str(start_year)]
         df_tax12[tax_type]['All']['pre_tax_income'] = df_tax12[tax_type]['All'][income_measure[tax_type]+'_'+str(start_year)]        
         df_tax12[tax_type]['All']['pitax_current_law'] = df_tax12[tax_type]['All'][tax_collection_var+'_'+str(start_year)]
@@ -415,11 +417,13 @@ def generate_policy_revenues():
         varlist = ['pre_tax_income', 'pitax_current_law', 'pitax_reform']
         kakwani_list = []
         gini= gini.sort_values(by='pre_tax_income')
+        
         #gini['weight'] = 100
         gini['cumulative_weight']=np.cumsum(gini['weight'])
         sum_weight = (gini['weight']).sum()
         gini['percentage_cumul_pop'] = gini['cumulative_weight']/sum_weight
         gini['total_income'] = gini['weight']*gini['pre_tax_income']
+        
         gini['cumulative_total_income']= np.cumsum(gini['total_income'])
         sum_total_income = sum(gini['total_income'])
         gini['percentage_cumul_income'] = gini['cumulative_total_income']/sum_total_income
@@ -461,7 +465,7 @@ def generate_policy_revenues():
             sum_integrate_area = gini['integrate_area'].sum()
             gini_index = 2*(sum_integrate_area)
             kakwani_list = kakwani_list + [gini_index-gini_index0]
-            i=1+1            
+                       
         return kakwani_list
      
     def merge_distribution_table_dicts(dt1, dt2, tax_type, data_start_year, end_year):

@@ -120,7 +120,7 @@ class GSTRecords(object):
         # specify current_year and ASSESSMENT_YEAR values
         if isinstance(start_year, int):
             self.__current_year = start_year
-            self.ASSESSMENT_YEAR.fill(start_year)
+            self.Year.fill(start_year)
         else:
             msg = 'start_year is not an integer'
             raise ValueError(msg)
@@ -179,7 +179,7 @@ class GSTRecords(object):
         are skipped.
         """
         self.__current_year = new_current_year
-        self.ASSESSMENT_YEAR.fill(new_current_year)
+        self.Year.fill(new_current_year)
 
     @staticmethod
     def read_var_info():
@@ -261,7 +261,7 @@ class GSTRecords(object):
         blowup_data_all = pd.read_csv(blowup_path, index_col='YEAR')
         blowup_data = blowup_data_all.loc[self.panelyear + 4]
         # extract the observations for the intended year
-        assessyear = np.array(self.full_panel['ASSESSMENT_YEAR'])
+        assessyear = np.array(self.full_panel['Year'])
         data1 = self.full_panel[assessyear == self.panelyear].reset_index()
         # apply the blowup factors
         BF_CORP1 = blowup_data['AGGREGATE_LIABILTY']

@@ -12,13 +12,12 @@ from taxcalc.decorators import iterate_jit
 
 
 @iterate_jit(nopython=True)
-def Net_accounting_profit(Revenues, Other_revenues, Expenses, Net_accounting_profit):
+def Net_accounting_profit(Sales, Other_Income, Expenses, Net_Income):
     """
     Compute accounting profit from business
     """
-    Net_accounting_profit = Revenues + Other_revenues - Expenses
-    return Net_accounting_profit
-
+    Net_accounting_profit = Sales + Other_Income - Expenses
+    return Net_Income
 
 @iterate_jit(nopython=True)
 def Total_additions_to_GP(Donations_NGO, Donations_Others, Donations_Govt, Other_additions, Total_additions_to_GP):
@@ -29,11 +28,11 @@ def Total_additions_to_GP(Donations_NGO, Donations_Others, Donations_Govt, Other
     return Total_additions_to_GP
 
 @iterate_jit(nopython=True)
-def Total_taxable_profit(Net_accounting_profit, Total_additions_to_GP, Total_taxable_profit):
+def Total_taxable_profit(Net_Income, Total_taxable_profit):
     """
     Compute total taxable profits afer adding back non-allowable deductions.
     """
-    Total_taxable_profit = Net_accounting_profit + Total_additions_to_GP
+    Total_taxable_profit = Net_Income
     return Total_taxable_profit
 
 @iterate_jit(nopython=True)

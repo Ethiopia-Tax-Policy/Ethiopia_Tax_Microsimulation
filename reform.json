@@ -1,1 +1,128 @@
-{}
+{
+  "1": {
+    "selected_item": "rate1",
+    "selected_year": [
+      "2022"
+    ],
+    "selected_value": [
+      "0.0"
+    ]
+  },
+  "2": {
+    "selected_item": "rate2",
+    "selected_year": [
+      "2022"
+    ],
+    "selected_value": [
+      "0.15"
+    ]
+  },
+  "3": {
+    "selected_item": "rate3",
+    "selected_year": [
+      "2022"
+    ],
+    "selected_value": [
+      "0.2"
+    ]
+  },
+  "4": {
+    "selected_item": "rate4",
+    "selected_year": [
+      "2022"
+    ],
+    "selected_value": [
+      "0.25"
+    ]
+  },
+  "5": {
+    "selected_item": "rate5",
+    "selected_year": [
+      "2022"
+    ],
+    "selected_value": [
+      "0.3"
+    ]
+  },
+  "6": {
+    "selected_item": "rate6",
+    "selected_year": [
+      "2022"
+    ],
+    "selected_value": [
+      "0.35"
+    ]
+  },
+  "7": {
+    "selected_item": "rate7",
+    "selected_year": [
+      "2022"
+    ],
+    "selected_value": [
+      "0.35"
+    ]
+  },
+  "8": {
+    "selected_item": "tbrk1",
+    "selected_year": [
+      "2022"
+    ],
+    "selected_value": [
+      "24000.0"
+    ]
+  },
+  "9": {
+    "selected_item": "tbrk2",
+    "selected_year": [
+      "2022"
+    ],
+    "selected_value": [
+      "54000.0"
+    ]
+  },
+  "10": {
+    "selected_item": "tbrk3",
+    "selected_year": [
+      "2022"
+    ],
+    "selected_value": [
+      "78000.0"
+    ]
+  },
+  "11": {
+    "selected_item": "tbrk4",
+    "selected_year": [
+      "2022"
+    ],
+    "selected_value": [
+      "114000.0"
+    ]
+  },
+  "12": {
+    "selected_item": "tbrk5",
+    "selected_year": [
+      "2022"
+    ],
+    "selected_value": [
+      "156000.0"
+    ]
+  },
+  "13": {
+    "selected_item": "tbrk6",
+    "selected_year": [
+      "2022"
+    ],
+    "selected_value": [
+      "1.0000000000000001e+99"
+    ]
+  },
+  "14": {
+    "selected_item": "tbrk7",
+    "selected_year": [
+      "2022"
+    ],
+    "selected_value": [
+      "9e+99"
+    ]
+  }
+}

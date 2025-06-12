@@ -622,15 +622,24 @@ class Calculator(object):
         if self.corprecords is not None:         
             return self.carray('weight').sum()
     
-    def dataframe(self, variable_list):
+    def dataframe(self, variable_list, attribute_value=None, attribute_var=None):
         """
         Return pandas DataFrame containing the listed variables from embedded
         Records object.
         """
+        if attribute_var is not None:
+            variable_list = variable_list + [attribute_var]
+        #print('variable_list ', variable_list)
         assert isinstance(variable_list, list)
         arys = [self.array(vname) for vname in variable_list]
         #print(arys)
+        #print('attribute_value ', attribute_value)
+        #print('attribute_var ', attribute_var)
         pdf = pd.DataFrame(data=np.column_stack(arys), columns=variable_list)
+        #print('pdf \n', pdf)
+        if attribute_var is not None:
+            if attribute_value != 'All':
+                pdf = pdf[pdf[attribute_var]==attribute_value]
         del arys
         return pdf
 
@@ -655,15 +664,24 @@ class Calculator(object):
         del arys
         return pdf
 
-    def dataframe_vat(self, variable_list):
+    def dataframe_vat(self, variable_list, attribute_value=None, attribute_var=None):
         """
         Return pandas DataFrame containing the listed variables from embedded
         Records object.
         """
+        if attribute_var is not None:
+            variable_list = variable_list + [attribute_var]
+        #print('variable_list ', variable_list)
         assert isinstance(variable_list, list)
         arys = [self.garray(vname) for vname in variable_list]
         #print(arys)
+        #print('attribute_value ', attribute_value)
+        #print('attribute_var ', attribute_var)
         pdf = pd.DataFrame(data=np.column_stack(arys), columns=variable_list)
+        #print('pdf \n', pdf)
+        if attribute_var is not None:
+            if attribute_value != 'All':
+                pdf = pdf[pdf[attribute_var]==attribute_value]
         del arys
         return pdf
     
@@ -694,11 +712,11 @@ class Calculator(object):
             if self.gstrecords is not None:
                 if attribute_var is not None:
                     if attribute_value == 'All':
-                        return self.dataframe_gst(DIST_VARIABLES)
+                        return self.dataframe_vat(DIST_VARIABLES)
                     else:
-                        return self.dataframe_gst(DIST_VARIABLES, attribute_value, attribute_var)
+                        return self.dataframe_vat(DIST_VARIABLES, attribute_value, attribute_var)
                 else:
-                        return self.dataframe_gst(DIST_VARIABLES)            
+                        return self.dataframe_vat(DIST_VARIABLES)            
         else:
             msg = 'tax type ="{}" is not valid'
             raise ValueError(msg.format(tax_type))
@@ -1006,7 +1024,7 @@ class Calculator(object):
         dt1 = {}
         for attribute_value in attribute_types:                   
             var_dataframe = self.distribution_table_dataframe(tax_type, distribution_vardict['DIST_VARIABLES'], attribute_value, attribute_var)
-            #print('var_dataframe \n', var_dataframe)
+            print('var_dataframe \n', var_dataframe)
             if income_measure is None:
                 imeasure = 'GTI'
             else:

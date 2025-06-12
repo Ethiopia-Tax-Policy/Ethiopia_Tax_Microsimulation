@@ -1,6 +1,6 @@
 {
   "read": {
-    "Taxpayer_ID": {
+    "id_n": {
       "required": true,
       "type": "int",
       "desc": "Unique positive numeric identifier for filing unit",
@@ -20,7 +20,7 @@
       "cross_year": "No",
       "attribute": "No"
     },
-    "Tax_due": {
+    "Tax_Due": {
       "required": false,
       "type": "float",
       "desc": "Tax Liability",
@@ -50,7 +50,7 @@
       "cross_year": "No",
       "attribute": "No"
     },
-    "Revenues": {
+    "Sales": {
       "type": "float",
       "desc": "Business turnover",
       "form": {
@@ -59,7 +59,7 @@
       "cross_year": "No",
       "attribute": "No"
     },
-    "Other_revenues": {
+    "Other_Income": {
       "type": "float",
       "desc": "Other business receipts",
       "form": {
@@ -68,47 +68,20 @@
       "cross_year": "No",
       "attribute": "No"
     },
-    "Expenses": {
+    "Cost_of_Goods": {
+      "type": "float",
+      "desc": "Other business receipts",
+      "form": {
+        "2020": "Item 104 - Tax Return Legal Persons"
+      },
+      "cross_year": "No",
+      "attribute": "No"
+    },    
+    "Total_Expense": {
       "type": "float",
       "desc": "Other business expenses",
       "form": {
         "2020": "Item 105 - Tax Return Legal Persons"
-      },
-      "cross_year": "No",
-      "attribute": "No"
-    },
-    "Donations_NGO": {
-      "type": "float",
-      "desc": "Donations to registered NGOs and institutions",
-      "form": {
-        "2020": "Item 310 - carried forward from Table 402 - Tax Return Legal Persons"
-      },
-      "cross_year": "No",
-      "attribute": "No"
-    },
-    "Donations_Others": {
-      "type": "float",
-      "desc": "Donations to registered NGOs and institutions",
-      "form": {
-        "2020": "Item 310 - carried forward from Table 402 - Tax Return Legal Persons"
-      },
-      "cross_year": "No",
-      "attribute": "No"
-    },
-    "Donations_Govt": {
-      "type": "float",
-      "desc": "Donations to registered NGOs and institutions",
-      "form": {
-        "2020": "Item 310 - carried forward from Table 402 - Tax Return Legal Persons"
-      },
-      "cross_year": "No",
-      "attribute": "No"
-    },
-    "Other_additions": {
-      "type": "float",
-      "desc": "Donations to registered NGOs and institutions",
-      "form": {
-        "2020": "Item 310 - carried forward from Table 402 - Tax Return Legal Persons"
       },
       "cross_year": "No",
       "attribute": "No"
@@ -248,16 +221,7 @@
       "cross_year": "No",
       "attribute": "No"
     },
-    "Other_deductions": {
-      "type": "float",
-      "desc": "Deductions from total taxable profits other than tax depreciation",
-      "form": {
-        "2020": "Item 310 - carried forward from Table 402 - Tax Return Legal Persons"
-      },
-      "cross_year": "No",
-      "attribute": "No"
-    },
-    "Carried_forward_losses": {
+    "Loss_CF_Prev": {
       "type": "float",
       "desc": "carried forward losses of past years allowed to be adjusted against taxable profits",
       "form": {
@@ -266,29 +230,11 @@
       "cross_year": "No",
       "attribute": "No"
     },
-    "Exemptions": {
+    "Loss_CB_Adj": {
       "type": "float",
-      "desc": "exemptions allowed as per tax law",
+      "desc": "carried forward losses of past years allowed to be adjusted against taxable profits",
       "form": {
-        "2020": "Item 313 - carried forward from Table 414 - Tax Return Legal Persons"
-      },
-      "cross_year": "No",
-      "attribute": "No"
-    },
-    "Investment_incentive": {
-      "type": "float",
-      "desc": "investment incentive allowed as per tax law",
-      "form": {
-        "2020": "Item 314 - Tax Return Legal Persons"
-      },
-      "cross_year": "No",
-      "attribute": "No"
-    },
-    "Exchange_rate": {
-      "type": "float",
-      "desc": "Exchange rate used to convert foreign currency to Egyptian Pounds",
-      "form": {
-        "2020": "After Item 317 - Tax Return Legal Persons"
+        "2020": "Item 311 - carried forward from Table 412 - Tax Return Legal Persons"
       },
       "cross_year": "No",
       "attribute": "No"
@@ -385,21 +331,28 @@
     }
   },
   "calc": {
-    "Net_accounting_profit": {
+    "Gross_Income": {
       "type": "float",
       "desc": "computed accounting business profit",
       "form": {
         "2020": "Item-106 - Tax Return Legal Persons"
       }
     },
-    "Total_additions_to_GP": {
+    "Gross_Profit": {
       "type": "float",
-      "desc": "additions to accounting profit to compute taxable profits",
+      "desc": "computed accounting business profit",
       "form": {
-        "2020": "Sum of items 201 to 215 - Tax Return Legal Persons"
+        "2020": "Item-106 - Tax Return Legal Persons"
       }
     },
-    "Total_taxable_profit": {
+    "Net_Income": {
+      "type": "float",
+      "desc": "computed accounting business profit",
+      "form": {
+        "2020": "Item-106 - Tax Return Legal Persons"
+      }
+    },
+    "Total_Taxable_Profit": {
       "type": "float",
       "desc": "Taxable Income after adding back non-allowable expenses to accounting profit",
       "form": {
@@ -413,25 +366,18 @@
         "2020": "Sch 411 of Tax Return Legal Persons"
       }
     },
-    "Total_deductions": {
+    "Total_Deductions": {
       "type": "float",
       "desc": "Sum of tax depreciation and other deductions as per tax law",
       "form": {
         "2020": "Tax Return Legal Persons"
       }
     },
-    "Net_taxable_profit": {
+    "Taxable_Business_Income": {
       "type": "float",
       "desc": "Taxable Income after allowing deductions as per tax law",
       "form": {
         "2020": "Item 309 - Tax Return Legal Persons"
-      }
-    },
-    "Donations_allowed": {
-      "type": "float",
-      "desc": "Donations to registered NGOs and institutions",
-      "form": {
-        "2020": "Item 310 - carried forward from Table 402 - Tax Return Legal Persons"
       }
     },
     "CF_losses": {
@@ -455,18 +401,18 @@
         "2020": "Item 315 - Tax Return Legal Persons"
       }
     },
+    "Tax_base_Imputed": {
+      "type": "float",
+      "desc": "Net tax base after allowing exemptions and investment incentive as per tax law",
+      "form": {
+        "2020": "Item 315 - Tax Return Legal Persons"
+      }
+    },    
     "Net_tax_base_behavior": {
       "type": "float",
       "desc": "Taxable Income after allowing for behavioral effect",
       "form": {
         "2020": ""
-      }
-    },
-    "Net_tax_base_Egyp_Pounds": {
-      "type": "float",
-      "desc": "Net tax base in Egyptian Pounds if tax is in foreign currency based on exchange rate",
-      "form": {
-        "2020": "Item 315 - Tax Return Legal Persons"
       }
     },
     "citax": {

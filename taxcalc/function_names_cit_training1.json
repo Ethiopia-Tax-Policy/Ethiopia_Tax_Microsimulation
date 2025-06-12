@@ -1,0 +1,23 @@
+{
+  "0": "calc_Gross_Income",
+  "1": "calc_Gross_Profit",
+  "2": "calc_Net_Income",
+  "3": "Op_WDV_depr",
+  "4": "Tax_depr_Bld",
+  "5": "Tax_depr_Intang",
+  "6": "Tax_depr_Mach",
+  "7": "Tax_depr_Others",
+  "8": "Tax_depr_Comp",
+  "9": "Tax_depreciation",
+  "10": "Cl_WDV_depr",
+  "11": "calc_Total_Deductions",
+  "12": "calc_Carried_Forward_Losses",
+  "13": "calc_Total_Taxable_Profit",
+  "14": "calc_Taxable_Business_Income",
+  "15": "calc_Tax_base_CF_losses",
+  "16": "calc_Net_tax_base",
+  "17": "calc_Imputed_tax_base",
+  "18": "calc_Net_tax_base_behavior",
+  "19": "calc_mat_liability",
+  "20": "calc_cit_liability"
+}

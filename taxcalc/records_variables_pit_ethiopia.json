@@ -1,0 +1,173 @@
+{
+  "read": {
+    "id_n": {
+      "required": true,
+      "type": "int",
+      "desc": "Unique positive numeric identifier for filing unit",
+      "form": {
+        "2022": "Private Info"
+      },
+      "cross_year": "No",
+      "attribute": "No"
+    },
+    "Year": {
+      "required": true,
+      "type": "int",
+      "desc": "Assessment Year",
+      "form": {
+        "2022": "survey"
+      },
+      "cross_year": "No",
+      "attribute": "No"
+    },
+    "Employment_Income": {
+      "type": "float",
+      "desc": "Gross income from Salary, other personal income based on employment and pensions",
+      "form": {
+        "2022": "Ethiopia Socio-Economic Survey 2021-22 Labor - Section 4 - sect4_hh_w5"
+      },
+      "cross_year": "No",
+      "attribute": "No"
+    },
+    "Other_Income_Federal": {
+      "type": "float",
+      "desc": "Income other than Employment Income taxed at the Federal level",
+      "form": {
+        "2022": "Ethiopia Socio-Economic Survey 2021-22 Labor - Section 4 - sect4_hh_w5"
+      },
+      "cross_year": "No",
+      "attribute": "No"
+    },
+    "Other_Income_Regional": {
+      "type": "float",
+      "desc": "Income other than Employment Income taxed at the Regional level",
+      "form": {
+        "2022": "Ethiopia Socio-Economic Survey 2021-22 Labor - Section 4 - sect4_hh_w5"
+      },
+      "cross_year": "No",
+      "attribute": "No"
+    },        
+    "region": {
+      "type": "string",
+      "desc": "Gross income from Dividends and other income earned by participating in the profit ",
+      "form": {
+        "2022": "Ethiopia Socio-Economic Survey 2021-22 Labor - Section 4 - sect4_hh_w5"
+      },
+      "cross_year": "No",
+      "attribute": "No"
+    },
+    "employer_category": {
+      "type": "string",
+      "desc": "Gross income from Interest on loans, bonds and other securities ",
+      "form": {
+        "2022": "Ethiopia Socio-Economic Survey 2021-22 Labor - Section 4 - sect4_hh_w5"
+      },
+      "cross_year": "No",
+      "attribute": "No"
+    },
+    "employer_activity_code": {
+      "type": "string",
+      "desc": "Gross income from Interest on loans, bonds and other securities ",
+      "form": {
+        "2022": "Ethiopia Socio-Economic Survey 2021-22 Labor - Section 4 - sect4_hh_w5"
+      },
+      "cross_year": "No",
+      "attribute": "No"
+    },        
+    "weight": {
+      "type": "float",
+      "desc": "dummy tax calculation",
+      "form": {
+        "2022": "Ethiopia Socio-Economic Survey 2021-22 Labor - Section 4 - sect4_hh_w5"
+      },
+      "cross_year": "No",
+      "attribute": "No"
+    }    
+  },
+  "calc": {
+    "employment_income_taxable": {
+      "type": "float",
+      "desc": "Taxable Employment Income after Employment Deduction", 
+      "form": {
+        "2022": ""
+      }
+    },  
+    "gross_income": {
+      "type": "float",
+      "desc": "Gross Total Income (GTI)", 
+      "form": {
+        "2022": ""
+      }
+    },
+    "taxable_income": {
+      "type": "float",
+      "desc": "Taxable Income", 
+      "form": {
+        "2022": ""
+      }
+    },
+    "bracket1": {
+      "type": "float",
+      "desc": "Taxable Income", 
+      "form": {
+        "2022": ""
+      }
+    },
+    "bracket2": {
+      "type": "float",
+      "desc": "Taxable Income", 
+      "form": {
+        "2022": ""
+      }
+    },
+    "bracket3": {
+      "type": "float",
+      "desc": "Taxable Income", 
+      "form": {
+        "2022": ""
+      }
+    },
+    "bracket4": {
+      "type": "float",
+      "desc": "Taxable Income", 
+      "form": {
+        "2022": ""
+      }
+    },
+    "bracket5": {
+      "type": "float",
+      "desc": "Taxable Income", 
+      "form": {
+        "2022": ""
+      }
+    },
+    "bracket6": {
+      "type": "float",
+      "desc": "Taxable Income", 
+      "form": {
+        "2022": ""
+      }
+    },
+    "bracket7": {
+      "type": "float",
+      "desc": "Taxable Income", 
+      "form": {
+        "2022": ""
+      }
+    },
+    "pitax_before_tax_credit": {
+      "type": "float",
+      "desc": "PIT before Tax Credits", 
+      "form": {
+        "2022": ""
+      }
+    },                              
+    "pitax": {
+      "type": "float",
+      "desc": "PIT liability",
+      "form": {
+        "2022": ""
+      }
+    }
+  }
+}
