@@ -396,6 +396,18 @@ class Application(tk.Frame):
     #def clicked_generate_policy_revenues(self, run_type):
     #    self.run_core_program(run_type)
     
+    def clicked_generate_policy_revenues_from_reform_file(self, reform_filename):
+        df = pd.read_csv(reform_filename)
+        self.block_selected_dict = {}
+        for idx, row in df.iterrows():
+            entry = {
+                    "selected_item": str(row["Policy Parameter"]),
+                    "selected_year": [str(row["Year"])],
+                    "selected_value": [str(row["Value"])]
+                    }
+            self.block_selected_dict[str(idx + 1)] = entry  # JSON keys start from 1
+        self.run_core_program('revenue_with_reform_file')
+        
     def clicked_generate_policy_revenues(self):
         self.run_core_program('revenue')
 
@@ -415,23 +427,25 @@ class Application(tk.Frame):
         elif run_type=='dist_by_income':
             self.vars[self.tax_type+'_display_distribution_table_bydecile'] = 0
             self.vars[self.tax_type+'_display_distribution_table_byincome'] = 1
-            self.vars[self.tax_type+'_display_revenue_table'] = 0
-           
-        #elif run_type == 'rev_behavior':
-        else:
+            self.vars[self.tax_type+'_display_revenue_table'] = 0            
+        elif (run_type=='revenue') or (run_type=='revenue_with_reform_file'):
             self.vars[self.tax_type+'_display_distribution_table_bydecile'] = 0
             self.vars[self.tax_type+'_display_distribution_table'] = 0
             self.vars[self.tax_type+'_display_revenue_table'] = 1
+        else:
+            self.vars[self.tax_type+'_display_distribution_table_bydecile'] = 0
+            self.vars[self.tax_type+'_display_distribution_table'] = 0
+            self.vars[self.tax_type+'_display_revenue_table'] = 0            
             
         self.save_inputs()
-
-        self.block_selected_dict = self.generate_changes_dict(self.block_widget_dict, 
-                                                              self.year_value_pairs_policy_dict, 
-                                                              year_check=1, 
-                                                              start_year=global_vars['start_year'], 
-                                                              end_year=global_vars['end_year'],
-                                                              sector_widget=0)
-
+        
+        if (run_type!='revenue_with_reform_file'):
+            self.block_selected_dict = self.generate_changes_dict(self.block_widget_dict, 
+                                                                  self.year_value_pairs_policy_dict, 
+                                                                  year_check=1, 
+                                                                  start_year=global_vars['start_year'], 
+                                                                  end_year=global_vars['end_year'],
+                                                                  sector_widget=0)
         with open('reform.json', 'w') as f:
             f.write(json.dumps(self.block_selected_dict, indent=2))
 
@@ -465,8 +479,13 @@ class Application(tk.Frame):
         
         progress_bar = Progress_Bar(self.master)
         self.progressbar, self.progress_label = progress_bar.progressbar
-        from generate_policy_revenues import generate_policy_revenues       
-        self.foo_thread = Thread(target=generate_policy_revenues)        
+        if run_type=='tax_expenditure':
+            from generate_tax_expenditures import generate_tax_expenditures  
+            self.foo_thread = Thread(target=generate_tax_expenditures)
+        else: 
+            from generate_policy_revenues import generate_policy_revenues    
+            self.foo_thread = Thread(target=generate_policy_revenues)
+            
         self.foo_thread.daemon = True
         self.progressbar.start(interval=10)
         self.foo_thread.start()
@@ -477,18 +496,19 @@ class Application(tk.Frame):
         # self.pic.image = self.image         
         
     def clicked_generate_tax_expenditures(self):
-        vars = self.get_inputs_after_saving_current_vars()
-        if vars['show_error_log']:
-            self.logger.clear()
-        self.verbose = vars['verbose']
-        progress_bar = Progress_Bar(self.master)
-        self.progressbar, self.progress_label = progress_bar.progressbar
-        from generate_tax_expenditures import generate_tax_expenditures  
-        self.foo_thread = Thread(target=generate_tax_expenditures)
-        self.foo_thread.daemon = True
-        self.progressbar.start(interval=10)
-        self.foo_thread.start()
-        self.master.after(20, self.check_thread)
+        self.run_core_program('tax_expenditure')
+        # vars = self.get_inputs_after_saving_current_vars()
+        # if vars['show_error_log']:
+        #     self.logger.clear()
+        # self.verbose = vars['verbose']
+        # progress_bar = Progress_Bar(self.master)
+        # self.progressbar, self.progress_label = progress_bar.progressbar
+        # from generate_tax_expenditures import generate_tax_expenditures  
+        # self.foo_thread = Thread(target=generate_tax_expenditures)
+        # self.foo_thread.daemon = True
+        # self.progressbar.start(interval=10)
+        # self.foo_thread.start()
+        # self.master.after(20, self.check_thread)
 
     def clicked_generate_distribution(self, run_type):        
         self.run_core_program(run_type)

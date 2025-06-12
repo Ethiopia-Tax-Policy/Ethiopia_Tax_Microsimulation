@@ -36,9 +36,9 @@ def initialize_vars(self):
     self.reform={}
     self.selected_item = ""
     self.selected_value = ""
-    self.selected_year = 2018
+    self.selected_year = 2022
     self.sub_directory = "taxcalc"
-    self.year_list = [2022, 2023, 2024, 2025, 2026, 2027]
+    self.year_list = [2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032]
     # Include a check whether the years are valid by looking at the 
     # selected growfactors file
     """    
@@ -104,17 +104,18 @@ def initialize_vars(self):
     # self.vars['gdp_filename'] = 'gdp_nominal_srilanka.csv'
     
     
-    self.vars['DEFAULTS_FILENAME'] = "current_law_policy_pit_training.json"
-    self.vars['GROWFACTORS_FILENAME'] = "growfactors_pit_training.csv" 
-    self.vars['pit_data_filename'] = "pit_data_training.csv"
-    self.vars['pit_weights_filename'] = "pit_weights_training.csv"
-    self.vars['pit_records_variables_filename'] = "records_variables_pit_training.json"
-    self.vars['pit_benchmark_filename'] = "tax_incentives_benchmark_pit_training.json"
-    self.vars['pit_elasticity_filename'] = "elasticity_pit_training.json"
-    self.vars['pit_functions_filename'] = "functions_pit_training.py"
-    self.vars['pit_function_names_filename'] = "function_names_pit_training.json"
-    self.vars['pit_distribution_json_filename'] = 'pit_distribution_training.json'
-    self.vars['gdp_filename'] = 'gdp_nominal_training.csv'
+    self.vars['DEFAULTS_FILENAME'] = "current_law_policy_pit_ethiopia.json"
+    self.vars['GROWFACTORS_FILENAME'] = "growfactors_pit_ethiopia.csv" 
+    self.vars['pit_data_filename'] = "pit_ethiopia_syn.csv"
+    self.vars['pit_weights_filename'] = "pit_weights_ethiopia_syn.csv"
+    self.vars['pit_records_variables_filename'] = "records_variables_pit_ethiopia.json"
+    self.vars['pit_benchmark_filename'] = "tax_incentives_benchmark_pit_ethiopia.json"
+    self.vars['pit_elasticity_filename'] = "elasticity_pit_ethiopia.json"
+    self.vars['pit_functions_filename'] = "functions_pit_ethiopia.py"
+    self.vars['pit_function_names_filename'] = "function_names_pit_ethiopia.json"
+    self.vars['pit_distribution_json_filename'] = 'pit_distribution_ethiopia.json'
+    
+
     
     """
     self.vars['cit_data_filename'] = "cit_egypt.csv"
@@ -126,17 +127,32 @@ def initialize_vars(self):
     self.vars['cit_function_names_filename'] = "function_names_cit_egypt.json"
     self.vars['gdp_filename'] = 'gdp_nominal_egypt.csv'  
     """
-    self.vars['DEFAULTS_FILENAME'] = "current_law_policy_cit_training.json"    
-    self.vars['GROWFACTORS_FILENAME'] = "growfactors_cit_training.csv"
-    self.vars['cit_data_filename'] = "cit_data_training.csv"
-    self.vars['cit_weights_filename'] = "cit_weights_training.csv"
-    self.vars['cit_records_variables_filename'] = "records_variables_cit_training.json"    
+    
+    # CIT - Ethiopia
+    self.vars['DEFAULTS_FILENAME'] = "current_law_policy_cit_training1.json"    
+    self.vars['GROWFACTORS_FILENAME'] = "growfactors_cit_training1.csv"
+    self.vars['cit_data_filename'] = "cit_ethiopia.csv"
+    self.vars['cit_weights_filename'] = "cit_weights_ethiopia.csv"
+    self.vars['cit_records_variables_filename'] = "records_variables_cit_training1.json"    
     self.vars['cit_benchmark_filename'] = "tax_incentives_benchmark_cit.json"
     self.vars['cit_elasticity_filename'] = "elasticity_cit_training.json"
-    self.vars['cit_functions_filename'] = "functions_cit_training.py"
-    self.vars['cit_function_names_filename'] = "function_names_cit_training.json"
-    self.vars['cit_distribution_json_filename'] = 'cit_distribution_egypt.json'
-    
+    self.vars['cit_functions_filename'] = "functions_cit_training1.py"
+    self.vars['cit_function_names_filename'] = "function_names_cit_training1.json"
+    self.vars['cit_distribution_json_filename'] = 'cit_distribution_training1.json'
+
+    """    
+    # Business Income Tax - Ethiopia
+    self.vars['DEFAULTS_FILENAME'] = "current_law_policy_pit_self_empl_ethiopia.json"    
+    self.vars['GROWFACTORS_FILENAME'] = "growfactors_pit_self_empl_ethiopia.csv"
+    self.vars['cit_data_filename'] = "pit_self_empl_ethiopia.csv"
+    self.vars['cit_weights_filename'] = "pit_self_empl_weights_ethiopia.csv"
+    self.vars['cit_records_variables_filename'] = "records_variables_pit_self_empl_ethiopia.json"    
+    self.vars['cit_benchmark_filename'] = "tax_incentives_benchmark_cit.json"
+    self.vars['cit_elasticity_filename'] = "elasticity_cit_training.json"
+    self.vars['cit_functions_filename'] = "functions_pit_self_empl_ethiopia.py"
+    self.vars['cit_function_names_filename'] = "function_names_pit_self_empl_ethiopia.json"
+    self.vars['cit_distribution_json_filename'] = 'pit_self_empl_distribution_ethiopia.json'
+    """
     self.vars['cit_max_lag_years'] = 10
 
     self.vars['vat_data_filename'] = "vat.csv"
@@ -160,13 +176,14 @@ def initialize_vars(self):
     self.vars['vat_display_distribution_table_bydecile'] = 0
     self.vars['vat_display_revenue_table'] = 1
     
-
+    self.vars['gdp_filename'] = 'gdp_nominal_ethiopia.csv'
+    #self.vars['gdp_filename'] = 'gdp_nominal_ethiopia1.csv'
     
     self.vars['kakwani_list'] = []
     
     self.vars['start_year'] = 2022
-    self.vars['end_year']=2027
-    self.vars['data_start_year'] = 2018
+    self.vars['end_year']=2030
+    self.vars['data_start_year'] = 2022
 
     df= pd.read_csv(self.vars['gdp_filename'])
     df = df.set_index('Year')
@@ -183,7 +200,7 @@ def initialize_vars(self):
     #self.reform_filename = "app01_reform.json"
     
     #self.vars['SALARY_VARIABLE'] = "gross_i_w"
-    self.vars['SALARY_VARIABLE'] = "SALARY"
+    self.vars['SALARY_VARIABLE'] = "Employment_Income"
 
     self.vars['vat_id_var'] = 'id_n'
     
@@ -285,23 +302,23 @@ def display_entry(self, widget, tax_type):
         self.entry_end_year[tax_type].destroy()
     else:
         if tax_type == 'pit':
-            self.vars['DEFAULTS_FILENAME'] = "current_law_policy_pit_training.json"
-            self.vars['GROWFACTORS_FILENAME'] = "growfactors_pit_training.csv"
+            self.vars['DEFAULTS_FILENAME'] = "current_law_policy_pit_ethiopia.json"
+            self.vars['GROWFACTORS_FILENAME'] = "growfactors_pit_ethiopia.csv"
             self.vars['start_year'] = 2022
-            self.vars['data_start_year'] = 2018
+            self.vars['data_start_year'] = 2022
             #self.vars['SALARY_VARIABLE'] = "EmpIncRemuneration"
-            self.vars['SALARY_VARIABLE'] = "SALARY"
+            self.vars['SALARY_VARIABLE'] = "Employment_Income"
             self.vars['pit_id_var'] = 'id_n'
            
         elif tax_type == 'cit':
-            #self.vars['DEFAULTS_FILENAME'] = "current_law_policy_cit_egypt.json"    
-            #self.vars['GROWFACTORS_FILENAME'] = "growfactors_egypt.csv"
-            self.vars['DEFAULTS_FILENAME'] = "current_law_policy_cit_training.json"    
-            self.vars['GROWFACTORS_FILENAME'] = "growfactors_cit_training.csv"
+            self.vars['DEFAULTS_FILENAME'] = "current_law_policy_cit_training1.json"    
+            self.vars['GROWFACTORS_FILENAME'] = "growfactors_cit_training1.csv"
+            #self.vars['DEFAULTS_FILENAME'] = "current_law_policy_pit_self_empl_ethiopia.json"    
+            #self.vars['GROWFACTORS_FILENAME'] = "growfactors_pit_self_empl_ethiopia.csv"
             self.vars['start_year'] = 2022
-            self.vars['data_start_year'] = 2020
+            self.vars['data_start_year'] = 2022
             self.vars['SALARY_VARIABLE'] = "SALARY"
-            self.vars['cit_id_var'] = 'Taxpayer_ID'
+            self.vars['cit_id_var'] = 'id_n'
         
         self.grid_placement(block_1_title_pos_x)
         self.l1[tax_type]=Label(self.TAB1,text="Data Inputs "+ tax_type.upper(),

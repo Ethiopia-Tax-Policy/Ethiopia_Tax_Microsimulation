@@ -506,9 +506,11 @@ class CorpRecords(object):
                 READ_VARS.add(varname)
                 #print(CorpRecords.INTEGER_READ_VARS)
                 if varname in CorpRecords.INTEGER_READ_VARS:
+                    #print("varname int: ", varname)
                     setattr(self, varname,
                             taxdf[varname].astype(np.int32).values)
                 else:
+                    #print("varname non-int: ", varname)
                     setattr(self, varname,
                             taxdf[varname].astype(np.float64).values)
             elif varname in CorpRecords.ATTRIBUTE_READ_VARS:

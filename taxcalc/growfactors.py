@@ -182,6 +182,8 @@ class GrowFactors(object):
             msg = 'lastyear={} > GrowFactors.last_year={}'
             raise ValueError(msg.format(lastyear, self.last_year))
         # pylint: disable=no-member
+        #print(self.gfdf)
+        #print(self.gfdf[SALARY_VARIABLE][firstyear])
         rates = [round((self.gfdf[SALARY_VARIABLE][cyr] - 1.0), 4)
                  for cyr in range(firstyear, lastyear + 1)]
         return rates
